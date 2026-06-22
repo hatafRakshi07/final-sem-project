@@ -147,7 +147,11 @@
 
 @layer utilities {
   .animate-page {
-    animation: fadeIn 0.25s ease-out;
+    animation: pageEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes pageEnter {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -161,6 +165,9 @@
   }
   .glass {
     @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-md;
+  }
+  .ring-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:ring-offset-1;
   }
 }
 

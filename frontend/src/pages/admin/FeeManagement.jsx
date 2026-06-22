@@ -64,7 +64,7 @@ export default function FeeManagement() {
       {stats && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {[
-            { label: 'Total', value: `₹${stats.total?.toLocaleString()}`, icon: DollarSign, bg: 'bg-gray-100 dark:bg-gray-700', iconColor: 'text-gray-600 dark:text-gray-300' },
+            { label: 'Total', value: `₹${stats.total?.toLocaleString()}`, icon: DollarSign, bg: 'bg-slate-100 dark:bg-slate-700', iconColor: 'text-slate-600 dark:text-slate-300' },
             { label: 'Collected', value: `₹${stats.paid?.toLocaleString()}`, icon: CheckCircle, bg: 'bg-emerald-100 dark:bg-emerald-900/30', iconColor: 'text-emerald-600' },
             { label: 'Pending', value: `₹${stats.pending?.toLocaleString()}`, icon: Clock, bg: 'bg-amber-100 dark:bg-amber-900/30', iconColor: 'text-amber-600' },
             { label: 'Collection Rate', value: `${collectRate}%`, icon: TrendingUp, bg: 'bg-blue-100 dark:bg-blue-900/30', iconColor: 'text-blue-600' },
@@ -74,8 +74,8 @@ export default function FeeManagement() {
                 <Icon className={`h-5 w-5 ${iconColor}`} />
               </div>
               <div>
-                <p className="text-lg font-bold text-gray-900 dark:text-white leading-tight">{value}</p>
-                <p className="text-xs text-gray-500 uppercase tracking-wide">{label}</p>
+                <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight">{value}</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wide">{label}</p>
               </div>
             </div>
           ))}
@@ -86,10 +86,10 @@ export default function FeeManagement() {
       {stats?.total > 0 && (
         <div className="card">
           <div className="flex justify-between text-sm mb-2">
-            <span className="text-gray-600 dark:text-gray-400">Fee collection progress</span>
+            <span className="text-slate-600 dark:text-slate-400">Fee collection progress</span>
             <span className="font-bold text-emerald-600">{collectRate}%</span>
           </div>
-          <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+          <div className="h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
             <div className="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full transition-all duration-700" style={{ width: `${collectRate}%` }} />
           </div>
         </div>
@@ -100,7 +100,7 @@ export default function FeeManagement() {
         <div className="flex flex-wrap gap-2 mb-4">
           {['', 'paid', 'unpaid', 'overdue'].map(s => (
             <button key={s} onClick={() => setFilter(s)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filter === s ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>
+              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filter === s ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}`}>
               {s === '' ? 'All' : s}
             </button>
           ))}
@@ -125,8 +125,8 @@ export default function FeeManagement() {
                     </div>
                   </td>
                   <td>{f.fee_type}</td>
-                  <td className="font-bold text-gray-900 dark:text-white">₹{f.amount?.toLocaleString()}</td>
-                  <td className="text-gray-500 text-xs">{new Date(f.due_date).toLocaleDateString()}</td>
+                  <td className="font-bold text-slate-900 dark:text-white">₹{f.amount?.toLocaleString()}</td>
+                  <td className="text-slate-500 text-xs">{new Date(f.due_date).toLocaleDateString()}</td>
                   <td>
                     <span className={`badge ${f.status === 'paid' ? 'badge-green' : f.status === 'overdue' ? 'badge-red' : 'badge-yellow'}`}>{f.status}</span>
                   </td>
@@ -142,8 +142,8 @@ export default function FeeManagement() {
               ))}
               {!fees.length && (
                 <tr><td colSpan={6} className="py-12 text-center">
-                  <DollarSign className="h-8 w-8 text-gray-300 dark:text-gray-600 mx-auto mb-2" />
-                  <p className="text-gray-500">No fee records.</p>
+                  <DollarSign className="h-8 w-8 text-slate-300 dark:text-slate-600 mx-auto mb-2" />
+                  <p className="text-slate-500">No fee records.</p>
                 </td></tr>
               )}
             </tbody>

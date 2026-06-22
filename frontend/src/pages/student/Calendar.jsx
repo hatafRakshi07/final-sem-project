@@ -59,20 +59,20 @@ export default function Calendar() {
         <div className="lg:col-span-2 card">
           <div className="flex items-center justify-between mb-5">
             <button onClick={() => setDate(new Date(year, month - 1, 1))}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors active:scale-95">
-              <ChevronLeft className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-colors active:scale-95">
+              <ChevronLeft className="h-5 w-5 text-slate-600 dark:text-slate-300" />
             </button>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{MONTH_NAMES[month]} {year}</h3>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">{MONTH_NAMES[month]} {year}</h3>
             <button onClick={() => setDate(new Date(year, month + 1, 1))}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl transition-colors active:scale-95">
-              <ChevronRight className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-colors active:scale-95">
+              <ChevronRight className="h-5 w-5 text-slate-600 dark:text-slate-300" />
             </button>
           </div>
 
           {/* Day headers */}
           <div className="grid grid-cols-7 mb-2">
             {DAY_NAMES.map(d => (
-              <div key={d} className="text-center text-xs font-semibold text-gray-400 uppercase py-1">{d}</div>
+              <div key={d} className="text-center text-xs font-semibold text-slate-400 uppercase py-1">{d}</div>
             ))}
           </div>
 
@@ -85,9 +85,9 @@ export default function Calendar() {
               const dayEvts = getEventsForDay(day)
               return (
                 <div key={day} className={`relative p-1.5 rounded-xl transition-colors cursor-default min-h-[42px] flex flex-col items-center ${
-                  isToday ? 'bg-primary-600 text-white' : 'hover:bg-gray-50 dark:hover:bg-gray-700'
+                  isToday ? 'bg-primary-600 text-white' : 'hover:bg-slate-50 dark:hover:bg-slate-700'
                 }`}>
-                  <span className={`text-sm font-medium ${isToday ? 'text-white' : 'text-gray-700 dark:text-gray-200'}`}>{day}</span>
+                  <span className={`text-sm font-medium ${isToday ? 'text-white' : 'text-slate-700 dark:text-slate-200'}`}>{day}</span>
                   <div className="flex gap-0.5 mt-0.5 flex-wrap justify-center">
                     {dayEvts.slice(0, 3).map((evt, ei) => (
                       <span key={ei} className={`w-1.5 h-1.5 rounded-full ${typeConfig[evt.type]?.color || 'bg-gray-400'}`} title={evt.label} />
@@ -99,9 +99,9 @@ export default function Calendar() {
           </div>
 
           {/* Legend */}
-          <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+          <div className="flex flex-wrap gap-3 mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
             {Object.entries(typeConfig).map(([type, cfg]) => (
-              <span key={type} className="flex items-center gap-1.5 text-xs text-gray-500">
+              <span key={type} className="flex items-center gap-1.5 text-xs text-slate-500">
                 <span className={`w-2.5 h-2.5 rounded-full ${cfg.color}`} />
                 <span className="capitalize">{type}</span>
               </span>
@@ -112,9 +112,9 @@ export default function Calendar() {
         {/* Upcoming Events */}
         <div className="space-y-4">
           <div className="card">
-            <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide mb-4">This Month's Events</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide mb-4">This Month's Events</h3>
             {monthEvents.length === 0 ? (
-              <p className="text-gray-400 text-sm text-center py-4">No events this month</p>
+              <p className="text-slate-400 text-sm text-center py-4">No events this month</p>
             ) : (
               <div className="space-y-2">
                 {monthEvents.map((e, i) => {
@@ -137,19 +137,19 @@ export default function Calendar() {
           </div>
 
           <div className="card">
-            <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide mb-4">Upcoming</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide mb-4">Upcoming</h3>
             {upcomingEvents.length === 0 ? (
-              <p className="text-gray-400 text-sm text-center py-4">No upcoming events</p>
+              <p className="text-slate-400 text-sm text-center py-4">No upcoming events</p>
             ) : (
               <div className="space-y-2">
                 {upcomingEvents.map((e, i) => {
                   const cfg = typeConfig[e.type]
                   return (
-                    <div key={i} className="flex items-center gap-3 py-2 border-b border-gray-100 dark:border-gray-700 last:border-0">
+                    <div key={i} className="flex items-center gap-3 py-2 border-b border-slate-100 dark:border-slate-700 last:border-0">
                       <div className={`w-2 h-2 rounded-full flex-shrink-0 ${cfg?.color}`} />
                       <div className="flex-1 min-w-0">
-                        <p className="text-xs font-medium text-gray-800 dark:text-gray-200 truncate">{e.label}</p>
-                        <p className="text-xs text-gray-400">{MONTH_NAMES[e.month]} {e.day}</p>
+                        <p className="text-xs font-medium text-slate-800 dark:text-slate-200 truncate">{e.label}</p>
+                        <p className="text-xs text-slate-400">{MONTH_NAMES[e.month]} {e.day}</p>
                       </div>
                       <span className={`text-xs px-2 py-0.5 rounded-full font-medium flex-shrink-0 ${cfg?.badge}`}>{e.type}</span>
                     </div>

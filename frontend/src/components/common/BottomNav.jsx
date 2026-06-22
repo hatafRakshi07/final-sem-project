@@ -40,7 +40,7 @@ export default function BottomNav() {
   if (!user || items.length <= 1) return null
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 sm:hidden z-40 glass border-t border-gray-200 dark:border-gray-700 safe-bottom">
+    <nav className="fixed bottom-0 left-0 right-0 sm:hidden z-40 glass border-t border-slate-200 dark:border-slate-700 safe-bottom">
       <div className="flex items-center justify-around px-1 py-1.5">
         {items.map(({ to, label, icon: Icon, end }) => (
           <NavLink
@@ -51,7 +51,7 @@ export default function BottomNav() {
               `flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-all duration-200 min-w-[52px] ${
                 isActive
                   ? 'text-primary-600 dark:text-primary-400'
-                  : 'text-gray-400 dark:text-gray-500'
+                  : 'text-slate-400 dark:text-slate-500'
               }`
             }
           >

@@ -53,8 +53,8 @@ export default function AdminAnalytics() {
               <Icon className={`h-5 w-5 ${iconColor}`} />
             </div>
             <div>
-              <p className="text-lg font-bold text-gray-900 dark:text-white leading-tight">{value ?? '—'}</p>
-              <p className="text-xs text-gray-500 uppercase tracking-wide">{label}</p>
+              <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight">{value ?? '—'}</p>
+              <p className="text-xs text-slate-500 uppercase tracking-wide">{label}</p>
             </div>
           </div>
         ))}
@@ -64,10 +64,10 @@ export default function AdminAnalytics() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {trend.length > 0 && (
           <div className="card lg:col-span-2">
-            <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide mb-4">Attendance Trend (14 days)</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide mb-4">Attendance Trend (14 days)</h3>
             <ResponsiveContainer width="100%" height={220}>
               <LineChart data={trend}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
                 <XAxis dataKey="date" tick={{ fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={d => d?.slice(5)} />
                 <YAxis tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
                 <Tooltip />
@@ -77,7 +77,7 @@ export default function AdminAnalytics() {
           </div>
         )}
         <div className="card">
-          <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide mb-4">Fee Collection</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide mb-4">Fee Collection</h3>
           <ResponsiveContainer width="100%" height={220}>
             <PieChart>
               <Pie data={feeData} cx="50%" cy="50%" innerRadius={60} outerRadius={85} dataKey="value">
@@ -97,10 +97,10 @@ export default function AdminAnalytics() {
       {/* Grade distribution */}
       {gradeData.length > 0 && (
         <div className="card">
-          <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide mb-4">Grade Distribution</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide mb-4">Grade Distribution</h3>
           <ResponsiveContainer width="100%" height={220}>
             <BarChart data={gradeData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
               <XAxis dataKey="grade" tick={{ fontSize: 12 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
               <Tooltip />

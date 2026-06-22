@@ -1,85 +1,118 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { useTheme } from '../../context/ThemeContext'
-import { Bell, Moon, Sun, LogOut, User, Menu } from 'lucide-react'
+import { Bell, Moon, Sun, Menu, Search, LogOut, ChevronDown } from 'lucide-react'
 import { useNotifications } from '../../context/NotificationContext'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
-const roleAvatarColors = {
-  student: 'from-primary-500 to-primary-600',
-  teacher: 'from-emerald-500 to-emerald-600',
-  admin: 'from-purple-500 to-purple-600',
-  parent: 'from-orange-400 to-orange-500',
+const routeLabels = {
+  '/student': 'Dashboard', '/student/attendance': 'Attendance', '/student/marks': 'Marks & Exams',
+  '/student/assignments': 'Assignments', '/student/fees': 'Fees & Payments',
+  '/student/timetable': 'Timetable', '/student/calendar': 'Calendar',
+  '/student/leaves': 'Leave Applications', '/student/notices': 'Notices', '/student/ai-insights': 'AI Insights',
+  '/teacher': 'Dashboard', '/teacher/attendance': 'Attendance', '/teacher/assignments': 'Assignments',
+  '/teacher/marks': 'Marks', '/teacher/practicals': 'Practicals', '/teacher/leaves': 'Leave Requests',
+  '/teacher/students': 'Students', '/teacher/notices': 'Notices', '/teacher/analytics': 'Analytics',
+  '/admin': 'Dashboard', '/admin/students': 'Students', '/admin/teachers': 'Teachers',
+  '/admin/fees': 'Fee Management', '/admin/timetable': 'Timetable',
+  '/admin/analytics': 'Analytics', '/admin/notices': 'Notices',
+  '/parent': 'Dashboard',
+}
+
+const roleColors = {
+  student: 'from-primary-600 to-violet-600',
+  teacher: 'from-emerald-600 to-teal-600',
+  admin: 'from-rose-600 to-orange-600',
+  parent: 'from-amber-500 to-orange-500',
 }
 
 export default function Navbar({ onMenuClick }) {
   const { user, logout } = useAuth()
   const { dark, toggle } = useTheme()
   const { unread } = useNotifications()
-  const avatarGrad = roleAvatarColors[user?.role] || 'from-primary-500 to-primary-600'
+  const location = useLocation()
+  const [profileOpen, setProfileOpen] = useState(false)
+
+  const grad = roleColors[user?.role] || 'from-primary-600 to-violet-600'
   const initials = user?.full_name?.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase() || '?'
+  const pageLabel = routeLabels[location.pathname] || 'Page'
 
   return (
-    <nav className="glass border-b border-gray-200/60 dark:border-gray-700/60 px-3 sm:px-5 py-2.5 flex items-center justify-between sticky top-0 z-40 shadow-sm">
-      <div className="flex items-center gap-2 sm:gap-3">
+    <nav className="glass sticky top-0 z-40 h-14 px-4 flex items-center justify-between gap-4">
+      {/* Left */}
+      <div className="flex items-center gap-3 min-w-0">
         <button
           onClick={onMenuClick}
-          className="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 lg:hidden transition-colors active:scale-95"
-          aria-label="Open menu"
+          className="btn-icon lg:hidden flex-shrink-0"
+          aria-label="Menu"
         >
-          <Menu className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+          <Menu className="h-5 w-5" />
         </button>
-        <Link to="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-glow-sm">
-            <span className="text-white font-bold text-xs">EM</span>
-          </div>
-          <span className="font-bold text-gray-900 dark:text-white hidden sm:block text-sm">EduManage AI</span>
-        </Link>
+        <div className="min-w-0">
+          <h1 className="text-sm font-bold text-slate-900 dark:text-white truncate">{pageLabel}</h1>
+          <p className="text-[11px] text-slate-400 hidden sm:block capitalize">{user?.role} • EduManage AI</p>
+        </div>
       </div>
 
-      <div className="flex items-center gap-1 sm:gap-2">
-        {/* Theme toggle */}
-        <button
-          onClick={toggle}
-          className="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 transition-colors active:scale-95"
-          aria-label="Toggle theme"
-        >
+      {/* Right */}
+      <div className="flex items-center gap-1 flex-shrink-0">
+        {/* Theme */}
+        <button onClick={toggle} className="btn-icon" aria-label="Toggle theme">
           {dark
-            ? <Sun className="h-4.5 w-4.5 text-amber-400" />
-            : <Moon className="h-4.5 w-4.5" />
-          }
+            ? <Sun className="h-4 w-4 text-amber-400" />
+            : <Moon className="h-4 w-4" />}
         </button>
 
         {/* Notifications */}
         <Link
           to={`/${user?.role}`}
-          className="relative w-9 h-9 flex items-center justify-center rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 dark:text-gray-400 transition-colors active:scale-95"
+          className="btn-icon relative"
           aria-label="Notifications"
         >
-          <Bell className="h-4.5 w-4.5" />
+          <Bell className="h-4 w-4" />
           {unread > 0 && (
-            <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center ring-2 ring-white dark:ring-gray-800">
+            <span className="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center ring-2 ring-white dark:ring-slate-900">
               {unread > 9 ? '9+' : unread}
             </span>
           )}
         </Link>
 
         {/* User menu */}
-        <div className="flex items-center gap-2 ml-1 pl-2 sm:pl-3 border-l border-gray-200 dark:border-gray-700">
-          <div className={`w-8 h-8 bg-gradient-to-br ${avatarGrad} rounded-xl flex items-center justify-center shadow-sm flex-shrink-0`}>
-            <span className="text-white text-xs font-bold">{initials}</span>
-          </div>
-          <div className="hidden sm:block">
-            <p className="text-sm font-semibold text-gray-900 dark:text-white leading-tight truncate max-w-[120px]">{user?.full_name}</p>
-            <p className="text-[11px] text-gray-400 dark:text-gray-500 capitalize">{user?.role}</p>
-          </div>
+        <div className="relative ml-1">
           <button
-            onClick={logout}
-            className="w-8 h-8 flex items-center justify-center rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-all active:scale-95"
-            aria-label="Logout"
+            onClick={() => setProfileOpen(p => !p)}
+            className="flex items-center gap-2 pl-1 pr-2 py-1 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group"
           >
-            <LogOut className="h-4 w-4" />
+            <div className={`w-7 h-7 rounded-full bg-gradient-to-br ${grad} flex items-center justify-center text-[11px] font-bold text-white flex-shrink-0`}>
+              {initials}
+            </div>
+            <div className="hidden sm:block text-left">
+              <p className="text-xs font-semibold text-slate-800 dark:text-slate-100 leading-none truncate max-w-[100px]">{user?.full_name}</p>
+            </div>
+            <ChevronDown className="h-3.5 w-3.5 text-slate-400 hidden sm:block" />
           </button>
+
+          {profileOpen && (
+            <>
+              <div className="fixed inset-0 z-10" onClick={() => setProfileOpen(false)} />
+              <div className="absolute right-0 mt-1 w-52 bg-white dark:bg-slate-800 rounded-2xl shadow-card-lg border border-slate-200 dark:border-slate-700 z-20 overflow-hidden animate-scale-in">
+                <div className="px-4 py-3 border-b border-slate-100 dark:border-slate-700">
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white truncate">{user?.full_name}</p>
+                  <p className="text-xs text-slate-500 truncate">{user?.email}</p>
+                  <span className="inline-flex items-center mt-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-primary-50 dark:bg-primary-500/15 text-primary-700 dark:text-primary-400 capitalize">{user?.role}</span>
+                </div>
+                <div className="p-1.5">
+                  <button
+                    onClick={() => { logout(); setProfileOpen(false) }}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-medium text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Sign Out
+                  </button>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </nav>

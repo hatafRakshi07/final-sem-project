@@ -26,13 +26,13 @@ export default function ForgotPassword() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col">
       <div className="flex items-center justify-between p-4 sm:p-6">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-primary-600 rounded-xl flex items-center justify-center">
             <GraduationCap className="h-5 w-5 text-white" />
           </div>
-          <span className="font-bold text-gray-900 dark:text-white">EduManage AI</span>
+          <span className="font-bold text-slate-900 dark:text-white">EduManage AI</span>
         </div>
         <DarkModeToggle />
       </div>
@@ -44,8 +44,8 @@ export default function ForgotPassword() {
               <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="h-8 w-8 text-emerald-600" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Check Your Email</h2>
-              <p className="text-gray-500 mb-6">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Check Your Email</h2>
+              <p className="text-slate-500 mb-6">
                 If <strong>{email}</strong> is registered, a password reset link has been sent. Please check your inbox.
               </p>
               <Link to="/login" className="btn-primary w-full block text-center">
@@ -58,15 +58,15 @@ export default function ForgotPassword() {
                 <div className="w-14 h-14 bg-primary-100 dark:bg-primary-900/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Mail className="h-7 w-7 text-primary-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Reset Password</h2>
-                <p className="text-gray-500 text-sm mt-2">Enter your email and we'll send you a reset link</p>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Reset Password</h2>
+                <p className="text-slate-500 text-sm mt-2">Enter your email and we'll send you a reset link</p>
               </div>
 
               <form onSubmit={handle} className="space-y-4">
                 <div>
                   <label className="label">Email Address</label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                     <input
                       type="email"
                       className="input pl-10"

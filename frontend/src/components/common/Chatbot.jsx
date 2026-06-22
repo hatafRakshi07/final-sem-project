@@ -55,7 +55,7 @@ export default function Chatbot() {
         /* Mobile: full screen bottom sheet */
         inset-x-0 bottom-0 top-[20%] sm:top-auto
         sm:bottom-24 sm:right-6 sm:left-auto sm:w-[380px] sm:h-[520px]
-        bg-white dark:bg-gray-800 rounded-t-3xl sm:rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 flex flex-col
+        bg-white dark:bg-slate-800 rounded-t-3xl sm:rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-700 flex flex-col
       `}>
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-primary-600 to-accent-600 rounded-t-3xl sm:rounded-t-2xl flex-shrink-0">
@@ -91,13 +91,13 @@ export default function Chatbot() {
               <div className={`max-w-[78%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${
                 msg.role === 'user'
                   ? 'bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-tr-sm shadow-sm'
-                  : 'bg-gray-100 dark:bg-gray-700/70 text-gray-900 dark:text-gray-100 rounded-tl-sm'
+                  : 'bg-slate-100 dark:bg-slate-700/70 text-slate-900 dark:text-slate-100 rounded-tl-sm'
               }`}>
                 {msg.text}
               </div>
               {msg.role === 'user' && (
-                <div className="w-7 h-7 bg-gray-200 dark:bg-gray-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-                  <User className="h-3.5 w-3.5 text-gray-600 dark:text-gray-300" />
+                <div className="w-7 h-7 bg-slate-200 dark:bg-slate-600 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                  <User className="h-3.5 w-3.5 text-slate-600 dark:text-slate-300" />
                 </div>
               )}
             </div>
@@ -107,10 +107,10 @@ export default function Chatbot() {
               <div className="w-7 h-7 bg-primary-100 dark:bg-primary-900/60 rounded-xl flex items-center justify-center">
                 <Bot className="h-3.5 w-3.5 text-primary-600" />
               </div>
-              <div className="bg-gray-100 dark:bg-gray-700/70 px-4 py-3 rounded-2xl rounded-tl-sm">
+              <div className="bg-slate-100 dark:bg-slate-700/70 px-4 py-3 rounded-2xl rounded-tl-sm">
                 <div className="flex gap-1.5 items-center">
                   {[0, 1, 2].map(i => (
-                    <div key={i} className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
+                    <div key={i} className="w-2 h-2 bg-gray-400 dark:bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
                   ))}
                 </div>
               </div>
@@ -120,14 +120,14 @@ export default function Chatbot() {
         </div>
 
         {/* Input */}
-        <div className="p-3 border-t border-gray-100 dark:border-gray-700 flex-shrink-0 safe-bottom">
+        <div className="p-3 border-t border-slate-100 dark:border-slate-700 flex-shrink-0 safe-bottom">
           <div className="flex gap-2">
             <input
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && !e.shiftKey && send()}
               placeholder="Ask me anything..."
-              className="flex-1 px-4 py-2.5 text-sm border border-gray-200 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700/50 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-400/40 focus:border-primary-400 dark:focus:border-primary-500 transition-all"
+              className="flex-1 px-4 py-2.5 text-sm border border-slate-200 dark:border-slate-600 rounded-xl bg-slate-50 dark:bg-slate-700/50 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary-400/40 focus:border-primary-400 dark:focus:border-primary-500 transition-all"
             />
             <button
               onClick={send}

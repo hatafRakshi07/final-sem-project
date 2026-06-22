@@ -56,9 +56,9 @@ export default function Timetable() {
 
       {!entries.length ? (
         <div className="card text-center py-16">
-          <Calendar className="h-12 w-12 text-gray-300 dark:text-gray-600 mx-auto mb-3" />
-          <p className="text-gray-500">No timetable entries found for your class.</p>
-          <p className="text-xs text-gray-400 mt-1">Contact your admin to set up the timetable.</p>
+          <Calendar className="h-12 w-12 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+          <p className="text-slate-500">No timetable entries found for your class.</p>
+          <p className="text-xs text-slate-400 mt-1">Contact your admin to set up the timetable.</p>
         </div>
       ) : (
         <>
@@ -71,7 +71,7 @@ export default function Timetable() {
                 className={`flex-shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
                   activeDay === day
                     ? `bg-gradient-to-r ${dayColors[day]} text-white shadow-md`
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                    : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
                 } ${day === today ? 'ring-2 ring-offset-1 ring-primary-400' : ''}`}
               >
                 {day.slice(0, 3)}
@@ -84,19 +84,19 @@ export default function Timetable() {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <div className={`h-1 w-6 rounded-full bg-gradient-to-r ${dayColors[activeDay]}`} />
-              <h3 className="font-semibold text-gray-900 dark:text-white">{activeDay}</h3>
-              <span className="text-sm text-gray-500">— {dayEntries.length} classes</span>
+              <h3 className="font-semibold text-slate-900 dark:text-white">{activeDay}</h3>
+              <span className="text-sm text-slate-500">— {dayEntries.length} classes</span>
               {activeDay === today && <span className="badge badge-blue text-xs">Today</span>}
             </div>
 
             {dayEntries.length === 0 ? (
               <div className={`card border ${dayBg[activeDay]} text-center py-8`}>
-                <p className="text-gray-500">No classes on {activeDay}</p>
+                <p className="text-slate-500">No classes on {activeDay}</p>
               </div>
             ) : (
               <div className="relative pl-8">
                 {/* Timeline line */}
-                <div className="absolute left-3 top-4 bottom-4 w-0.5 bg-gray-200 dark:bg-gray-700" />
+                <div className="absolute left-3 top-4 bottom-4 w-0.5 bg-slate-200 dark:bg-slate-700" />
                 <div className="space-y-3">
                   {dayEntries.map((e, idx) => (
                     <div key={e.id} className="relative">
@@ -105,14 +105,14 @@ export default function Timetable() {
                       <div className={`card border ${dayBg[activeDay]} p-4 ml-1`}>
                         <div className="flex flex-wrap items-start justify-between gap-2">
                           <div>
-                            <p className="font-semibold text-gray-900 dark:text-white">
+                            <p className="font-semibold text-slate-900 dark:text-white">
                               {e.subject_name || `Subject ${e.subject_id}`}
                             </p>
                             {e.teacher_name && (
-                              <p className="text-xs text-gray-500 mt-0.5">{e.teacher_name}</p>
+                              <p className="text-xs text-slate-500 mt-0.5">{e.teacher_name}</p>
                             )}
                           </div>
-                          <div className="flex items-center gap-3 text-xs text-gray-500 flex-shrink-0">
+                          <div className="flex items-center gap-3 text-xs text-slate-500 flex-shrink-0">
                             <span className="flex items-center gap-1">
                               <Clock className="h-3.5 w-3.5" />
                               {e.start_time} – {e.end_time}
@@ -135,7 +135,7 @@ export default function Timetable() {
 
           {/* Weekly grid overview */}
           <div className="card">
-            <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide mb-4">Weekly Overview</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide mb-4">Weekly Overview</h3>
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
               {DAYS.map(day => {
                 const cnt = entries.filter(e => e.day_of_week === day).length
@@ -144,12 +144,12 @@ export default function Timetable() {
                     key={day}
                     onClick={() => setActiveDay(day)}
                     className={`p-3 rounded-xl text-center transition-all border ${
-                      activeDay === day ? `${dayBg[day]} shadow-sm` : 'border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700'
+                      activeDay === day ? `${dayBg[day]} shadow-sm` : 'border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
                     } ${cnt === 0 ? 'opacity-40' : ''}`}
                   >
-                    <p className="text-xs font-medium text-gray-700 dark:text-gray-300">{day.slice(0, 3)}</p>
+                    <p className="text-xs font-medium text-slate-700 dark:text-slate-300">{day.slice(0, 3)}</p>
                     <p className="text-lg font-bold text-primary-600 dark:text-primary-400">{cnt}</p>
-                    <p className="text-xs text-gray-400">class{cnt !== 1 ? 'es' : ''}</p>
+                    <p className="text-xs text-slate-400">class{cnt !== 1 ? 'es' : ''}</p>
                   </button>
                 )
               })}

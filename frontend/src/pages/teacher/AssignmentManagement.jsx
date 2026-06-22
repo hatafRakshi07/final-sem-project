@@ -78,7 +78,7 @@ export default function AssignmentManagement() {
         ].map(({ label, value, color, bg }) => (
           <div key={label} className={`card text-center p-4 ${bg}`}>
             <p className={`text-2xl font-bold ${color}`}>{value}</p>
-            <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">{label}</p>
+            <p className="text-xs text-slate-500 uppercase tracking-wide mt-1">{label}</p>
           </div>
         ))}
       </div>
@@ -94,9 +94,9 @@ export default function AssignmentManagement() {
                     <ClipboardList className={`h-5 w-5 ${overdue ? 'text-red-600' : 'text-emerald-600'}`} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-gray-900 dark:text-white">{a.title}</h3>
-                    {a.description && <p className="text-sm text-gray-500 mt-0.5 line-clamp-2">{a.description}</p>}
-                    <div className="flex flex-wrap items-center gap-3 mt-2 text-xs text-gray-500">
+                    <h3 className="font-semibold text-slate-900 dark:text-white">{a.title}</h3>
+                    {a.description && <p className="text-sm text-slate-500 mt-0.5 line-clamp-2">{a.description}</p>}
+                    <div className="flex flex-wrap items-center gap-3 mt-2 text-xs text-slate-500">
                       <span className="flex items-center gap-1">
                         <Clock className="h-3.5 w-3.5" />
                         Due: {new Date(a.deadline).toLocaleString()}
@@ -123,8 +123,8 @@ export default function AssignmentManagement() {
         })}
         {!assignments.length && (
           <div className="card text-center py-12">
-            <ClipboardList className="h-10 w-10 text-gray-300 dark:text-gray-600 mx-auto mb-3" />
-            <p className="text-gray-500">No assignments created yet.</p>
+            <ClipboardList className="h-10 w-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+            <p className="text-slate-500">No assignments created yet.</p>
           </div>
         )}
       </div>
@@ -170,7 +170,7 @@ export default function AssignmentManagement() {
               {submissions.map(s => (
                 <tr key={s.id}>
                   <td className="font-medium">Student #{s.student_id}</td>
-                  <td className="text-gray-500 text-xs">{new Date(s.submitted_at).toLocaleDateString()}</td>
+                  <td className="text-slate-500 text-xs">{new Date(s.submitted_at).toLocaleDateString()}</td>
                   <td><span className={`badge ${s.status === 'graded' ? 'badge-green' : s.status === 'late' ? 'badge-red' : 'badge-blue'}`}>{s.status}</span></td>
                   <td>{s.marks_obtained ?? '—'}</td>
                   <td>{s.grade ?? '—'}</td>
@@ -184,7 +184,7 @@ export default function AssignmentManagement() {
                   </td>
                 </tr>
               ))}
-              {!submissions.length && <tr><td colSpan={6} className="py-8 text-center text-gray-500">No submissions yet.</td></tr>}
+              {!submissions.length && <tr><td colSpan={6} className="py-8 text-center text-slate-500">No submissions yet.</td></tr>}
             </tbody>
           </table>
         </div>

@@ -113,8 +113,8 @@ export default function PracticalManagement() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Practical Management</h1>
-          <p className="text-gray-500 text-sm mt-1">Create and grade practical examinations</p>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Practical Management</h1>
+          <p className="text-slate-500 text-sm mt-1">Create and grade practical examinations</p>
         </div>
         <button className="btn-primary flex items-center gap-2" onClick={() => setShowCreateModal(true)}>
           <Plus className="h-4 w-4" /> New Practical Exam
@@ -125,26 +125,26 @@ export default function PracticalManagement() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="card text-center">
           <p className="text-3xl font-bold text-primary-600">{exams.length}</p>
-          <p className="text-sm text-gray-500 mt-1">Total Practicals</p>
+          <p className="text-sm text-slate-500 mt-1">Total Practicals</p>
         </div>
         <div className="card text-center">
           <p className="text-3xl font-bold text-green-600">
             {exams.filter(e => new Date(e.exam_date) < new Date()).length}
           </p>
-          <p className="text-sm text-gray-500 mt-1">Completed</p>
+          <p className="text-sm text-slate-500 mt-1">Completed</p>
         </div>
         <div className="card text-center">
           <p className="text-3xl font-bold text-amber-600">
             {exams.filter(e => new Date(e.exam_date) >= new Date()).length}
           </p>
-          <p className="text-sm text-gray-500 mt-1">Upcoming</p>
+          <p className="text-sm text-slate-500 mt-1">Upcoming</p>
         </div>
       </div>
 
       {/* Search */}
       <div className="card">
         <div className="relative mb-4">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
             className="input pl-9"
             placeholder="Search by title or class..."
@@ -155,35 +155,35 @@ export default function PracticalManagement() {
 
         {filteredExams.length === 0 ? (
           <div className="text-center py-12">
-            <ClipboardList className="h-12 w-12 text-gray-300 mx-auto mb-3" />
-            <p className="text-gray-500">No practical exams yet. Create one to get started.</p>
+            <ClipboardList className="h-12 w-12 text-slate-300 mx-auto mb-3" />
+            <p className="text-slate-500">No practical exams yet. Create one to get started.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <th className="text-left py-3 px-4 font-semibold text-gray-600 dark:text-gray-400">Title</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-600 dark:text-gray-400">Class</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-600 dark:text-gray-400">Date</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-600 dark:text-gray-400">Total Marks</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-600 dark:text-gray-400">Status</th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-600 dark:text-gray-400">Actions</th>
+                <tr className="border-b border-slate-200 dark:border-slate-700">
+                  <th className="text-left py-3 px-4 font-semibold text-slate-600 dark:text-slate-400">Title</th>
+                  <th className="text-left py-3 px-4 font-semibold text-slate-600 dark:text-slate-400">Class</th>
+                  <th className="text-left py-3 px-4 font-semibold text-slate-600 dark:text-slate-400">Date</th>
+                  <th className="text-left py-3 px-4 font-semibold text-slate-600 dark:text-slate-400">Total Marks</th>
+                  <th className="text-left py-3 px-4 font-semibold text-slate-600 dark:text-slate-400">Status</th>
+                  <th className="text-left py-3 px-4 font-semibold text-slate-600 dark:text-slate-400">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredExams.map(exam => {
                   const isPast = new Date(exam.exam_date) < new Date()
                   return (
-                    <tr key={exam.id} className="border-b border-gray-100 dark:border-gray-700/50 hover:bg-gray-50 dark:hover:bg-gray-700/30">
-                      <td className="py-3 px-4 font-medium text-gray-900 dark:text-white">{exam.title}</td>
-                      <td className="py-3 px-4 text-gray-600 dark:text-gray-400">
+                    <tr key={exam.id} className="border-b border-slate-100 dark:border-slate-700/50 hover:bg-slate-50 dark:hover:bg-slate-700/30">
+                      <td className="py-3 px-4 font-medium text-slate-900 dark:text-white">{exam.title}</td>
+                      <td className="py-3 px-4 text-slate-600 dark:text-slate-400">
                         {exam.class_name || '—'} {exam.section ? `(${exam.section})` : ''}
                       </td>
-                      <td className="py-3 px-4 text-gray-600 dark:text-gray-400">
+                      <td className="py-3 px-4 text-slate-600 dark:text-slate-400">
                         {new Date(exam.exam_date).toLocaleDateString()}
                       </td>
-                      <td className="py-3 px-4 text-gray-600 dark:text-gray-400">{exam.total_marks}</td>
+                      <td className="py-3 px-4 text-slate-600 dark:text-slate-400">{exam.total_marks}</td>
                       <td className="py-3 px-4">
                         <span className={`badge ${isPast ? 'badge-green' : 'badge-yellow'}`}>
                           {isPast ? 'Completed' : 'Upcoming'}
@@ -263,15 +263,15 @@ export default function PracticalManagement() {
       {/* Marks Entry Modal */}
       <Modal open={showMarksModal} onClose={() => setShowMarksModal(false)} title={`Enter Marks – ${selectedExam?.title}`} size="lg">
         <div className="space-y-4">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-slate-500">
             Total Marks: <strong>{selectedExam?.total_marks}</strong> | Passing: <strong>{selectedExam?.passing_marks}</strong>
           </p>
           <div className="max-h-96 overflow-y-auto space-y-2">
             {students.map(s => (
-              <div key={s.id} className="flex items-center justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700 last:border-0">
+              <div key={s.id} className="flex items-center justify-between gap-4 py-2 border-b border-slate-100 dark:border-slate-700 last:border-0">
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{s.full_name}</p>
-                  <p className="text-xs text-gray-400">{s.roll_number} · {s.class_name}</p>
+                  <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{s.full_name}</p>
+                  <p className="text-xs text-slate-400">{s.roll_number} · {s.class_name}</p>
                 </div>
                 <input
                   type="number"
@@ -285,7 +285,7 @@ export default function PracticalManagement() {
               </div>
             ))}
             {students.length === 0 && (
-              <p className="text-gray-400 text-center py-6">No students found</p>
+              <p className="text-slate-400 text-center py-6">No students found</p>
             )}
           </div>
           <div className="flex justify-end gap-3 pt-2">

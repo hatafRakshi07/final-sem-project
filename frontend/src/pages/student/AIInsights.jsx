@@ -23,7 +23,7 @@ export default function AIInsights() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-white">AI Performance Insights</h1>
+      <h1 className="text-2xl font-bold text-slate-900 dark:text-white">AI Performance Insights</h1>
       {perf && (
         <div className="card">
           <div className="flex items-center gap-3 mb-6">
@@ -42,9 +42,9 @@ export default function AIInsights() {
               { label: 'Assignments', value: `${perf.assignment_completion}%`, color: perf.assignment_completion >= 75 ? 'green' : 'yellow' },
             ].map(({ label, value, color }) => (
               <div key={label} className={`p-4 rounded-xl bg-${color}-50 dark:bg-${color}-900/20 border border-${color}-200 dark:border-${color}-800`}>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{label}</p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">{label}</p>
                 <p className={`text-2xl font-bold text-${color}-600 dark:text-${color}-400`}>{value}</p>
-                <div className="mt-2 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                <div className="mt-2 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                   <div className={`h-full bg-${color}-500 rounded-full`} style={{ width: value }} />
                 </div>
               </div>
@@ -69,7 +69,7 @@ export default function AIInsights() {
             </div>
           )}
           <div className="card">
-            <h3 className="font-semibold text-gray-900 dark:text-white flex items-center gap-2 mb-4">
+            <h3 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2 mb-4">
               <Lightbulb className="h-5 w-5 text-yellow-500" /> AI Recommendations
             </h3>
             <div className="space-y-3">

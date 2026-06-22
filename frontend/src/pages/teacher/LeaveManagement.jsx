@@ -87,7 +87,7 @@ export default function LeaveManagement() {
           <div key={label} className={`card text-center p-4 ${bg}`}>
             <Icon className={`h-6 w-6 ${color} mx-auto mb-1`} />
             <p className={`text-2xl font-bold ${color}`}>{count}</p>
-            <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">{label}</p>
+            <p className="text-xs text-slate-500 uppercase tracking-wide mt-1">{label}</p>
           </div>
         ))}
       </div>
@@ -103,7 +103,7 @@ export default function LeaveManagement() {
       <div className="card">
         <div className="flex flex-col sm:flex-row gap-3 mb-5">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
             <input
               className="input pl-9"
               placeholder="Search by student name or reason…"
@@ -119,7 +119,7 @@ export default function LeaveManagement() {
                 className={`px-3 py-1.5 rounded-full text-xs font-medium capitalize transition-colors ${
                   filter === s
                     ? 'bg-primary-600 text-white'
-                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                    : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
                 }`}
               >
                 {s} {s !== 'all' && `(${counts[s] ?? leaves.length})`}
@@ -134,8 +134,8 @@ export default function LeaveManagement() {
           </div>
         ) : filtered.length === 0 ? (
           <div className="text-center py-12">
-            <FileText className="h-10 w-10 text-gray-300 dark:text-gray-600 mx-auto mb-3" />
-            <p className="text-gray-500 text-sm">No leave applications found.</p>
+            <FileText className="h-10 w-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+            <p className="text-slate-500 text-sm">No leave applications found.</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -146,7 +146,7 @@ export default function LeaveManagement() {
               return (
                 <div
                   key={leave.id}
-                  className={`p-4 rounded-xl border border-gray-100 dark:border-gray-700 border-l-4 ${cfg.border} bg-white dark:bg-gray-800/60 shadow-sm hover:shadow-md transition-shadow`}
+                  className={`p-4 rounded-xl border border-slate-100 dark:border-slate-700 border-l-4 ${cfg.border} bg-white dark:bg-slate-800/60 shadow-sm hover:shadow-md transition-shadow`}
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-start gap-3 flex-1 min-w-0">
@@ -155,19 +155,19 @@ export default function LeaveManagement() {
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <p className="font-semibold text-sm text-gray-900 dark:text-white">
+                          <p className="font-semibold text-sm text-slate-900 dark:text-white">
                             {leave.student_name || `Student #${leave.student_id}`}
                           </p>
                           {leave.roll_number && (
-                            <span className="text-xs text-gray-400">({leave.roll_number})</span>
+                            <span className="text-xs text-slate-400">({leave.roll_number})</span>
                           )}
                           <span className={`px-2 py-0.5 rounded-full text-xs font-medium flex items-center gap-1 ${cfg.badge}`}>
                             {cfg.icon}
                             <span className="capitalize">{leave.status}</span>
                           </span>
                         </div>
-                        <p className="text-sm text-gray-700 dark:text-gray-300 mt-1 line-clamp-2">{leave.reason}</p>
-                        <div className="flex items-center gap-3 mt-2 text-xs text-gray-400 flex-wrap">
+                        <p className="text-sm text-slate-700 dark:text-slate-300 mt-1 line-clamp-2">{leave.reason}</p>
+                        <div className="flex items-center gap-3 mt-2 text-xs text-slate-400 flex-wrap">
                           <span>
                             {new Date(leave.from_date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}
                             {' → '}

@@ -73,11 +73,11 @@ export default function TeacherDashboard() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="text-2xl">👋</span>
-            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+            <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
               {greeting}, <span className="text-gradient">{user?.full_name?.split(' ')[0]}</span>
             </h1>
           </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
+          <p className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5" /> {dateStr}
           </p>
         </div>
@@ -104,7 +104,7 @@ export default function TeacherDashboard() {
         {/* Attendance overview chart */}
         <div className="card lg:col-span-2">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-gray-900 dark:text-white text-sm">Today's Attendance Overview</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Today's Attendance Overview</h3>
             <Link to="/teacher/attendance" className="text-xs text-primary-600 dark:text-primary-400 hover:underline flex items-center gap-1">
               Mark attendance <ChevronRight className="h-3 w-3" />
             </Link>
@@ -113,8 +113,8 @@ export default function TeacherDashboard() {
             <ResponsiveContainer width="100%" height={180}>
               <BarChart data={attChartData} barSize={48}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                <XAxis dataKey="label" tick={{ fontSize: 12, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
+                <XAxis dataKey="label" tick={{ fontSize: 12, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
                 <Tooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }} />
                 <Bar dataKey="count" radius={[8, 8, 0, 0]}>
                   {attChartData.map((entry, i) => <Cell key={i} fill={entry.color} />)}
@@ -122,7 +122,7 @@ export default function TeacherDashboard() {
               </BarChart>
             </ResponsiveContainer>
           ) : (
-            <div className="flex items-center justify-center h-40 text-gray-400 text-sm">
+            <div className="flex items-center justify-center h-40 text-slate-400 text-sm">
               No attendance data yet — <Link to="/teacher/attendance" className="text-primary-600 hover:underline ml-1">mark now</Link>
             </div>
           )}
@@ -131,15 +131,15 @@ export default function TeacherDashboard() {
         {/* Recent assignments */}
         <div className="card">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-gray-900 dark:text-white text-sm">Recent Assignments</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Recent Assignments</h3>
             <Link to="/teacher/assignments" className="text-xs text-primary-600 dark:text-primary-400 hover:underline flex items-center gap-1">
               View all <ChevronRight className="h-3 w-3" />
             </Link>
           </div>
           {myAssignments.length === 0 ? (
             <div className="text-center py-8">
-              <ClipboardList className="h-8 w-8 text-gray-300 dark:text-gray-600 mx-auto mb-2" />
-              <p className="text-gray-400 text-sm">No assignments yet</p>
+              <ClipboardList className="h-8 w-8 text-slate-300 dark:text-slate-600 mx-auto mb-2" />
+              <p className="text-slate-400 text-sm">No assignments yet</p>
               <Link to="/teacher/assignments" className="text-xs text-primary-600 hover:underline mt-1 inline-block">Create one →</Link>
             </div>
           ) : (
@@ -147,11 +147,11 @@ export default function TeacherDashboard() {
               {myAssignments.slice(0, 5).map(a => {
                 const isOverdue = new Date(a.deadline) < new Date()
                 return (
-                  <div key={a.id} className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700/40 transition-colors">
+                  <div key={a.id} className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/40 transition-colors">
                     <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${isOverdue ? 'bg-red-400' : 'bg-emerald-400'}`} />
                     <div className="min-w-0">
-                      <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{a.title}</p>
-                      <p className={`text-xs mt-0.5 ${isOverdue ? 'text-red-500' : 'text-gray-400'}`}>
+                      <p className="text-sm font-medium text-slate-900 dark:text-white truncate">{a.title}</p>
+                      <p className={`text-xs mt-0.5 ${isOverdue ? 'text-red-500' : 'text-slate-400'}`}>
                         {isOverdue ? 'Overdue' : 'Due'}: {new Date(a.deadline).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}
                       </p>
                     </div>
@@ -170,7 +170,7 @@ export default function TeacherDashboard() {
 
       {/* Quick Actions */}
       <div className="card">
-        <h3 className="font-semibold text-gray-900 dark:text-white text-sm mb-4">Quick Actions</h3>
+        <h3 className="font-semibold text-slate-900 dark:text-white text-sm mb-4">Quick Actions</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {QUICK_ACTIONS.map(({ label, to, icon: Icon, bg, iconBg, text, border }) => (
             <Link
@@ -191,7 +191,7 @@ export default function TeacherDashboard() {
       {students.length > 0 && (
         <div className="card">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-gray-900 dark:text-white text-sm flex items-center gap-2">
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm flex items-center gap-2">
               <Users className="h-4 w-4 text-primary-500" /> Student Roll
             </h3>
             <Link to="/teacher/students" className="text-xs text-primary-600 dark:text-primary-400 hover:underline flex items-center gap-1">
@@ -200,13 +200,13 @@ export default function TeacherDashboard() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
             {students.slice(0, 6).map(s => (
-              <div key={s.id} className="flex items-center gap-3 p-2.5 rounded-xl bg-gray-50 dark:bg-gray-700/40 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+              <div key={s.id} className="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-700/40 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
                 <div className="w-8 h-8 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-xs font-bold text-primary-700 dark:text-primary-300 flex-shrink-0">
                   {s.full_name?.charAt(0)}
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{s.full_name}</p>
-                  <p className="text-xs text-gray-400">{s.roll_number} · {s.class_name}</p>
+                  <p className="text-sm font-medium text-slate-900 dark:text-white truncate">{s.full_name}</p>
+                  <p className="text-xs text-slate-400">{s.roll_number} · {s.class_name}</p>
                 </div>
               </div>
             ))}

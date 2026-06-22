@@ -31,14 +31,14 @@ export default function Register() {
   const f = (name) => ({ value: form[name], onChange: e => setForm(p => ({...p, [name]: e.target.value})) })
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-4 py-10">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900 p-4 py-10">
       <div className="w-full max-w-2xl">
         <div className="text-center mb-8">
           <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary-500/20">
             <span className="text-white font-bold text-xl">E</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Student Registration</h2>
-          <p className="text-gray-400 dark:text-gray-500 mt-1.5 text-sm">Create your student account to get started</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Student Registration</h2>
+          <p className="text-slate-400 dark:text-slate-500 mt-1.5 text-sm">Create your student account to get started</p>
         </div>
         <div className="card">
           <form onSubmit={handle}>
@@ -65,7 +65,7 @@ export default function Register() {
               {loading ? <LoadingSpinner size="sm" /> : 'Create Account'}
             </button>
           </form>
-          <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-5">
+          <p className="text-center text-sm text-slate-500 dark:text-slate-400 mt-5">
             Already have an account?{' '}
             <Link to="/login" className="text-primary-600 hover:text-primary-700 dark:text-primary-400 font-semibold">Sign in</Link>
           </p>

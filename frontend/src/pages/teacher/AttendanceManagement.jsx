@@ -4,9 +4,9 @@ import toast from 'react-hot-toast'
 import { CheckCircle, XCircle, Clock, UserCheck, Users, ChevronDown, Save } from 'lucide-react'
 
 const STATUS_CONFIG = {
-  present: { label: 'Present', color: 'bg-emerald-500 text-white', inactive: 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-700', icon: CheckCircle },
-  absent: { label: 'Absent', color: 'bg-red-500 text-white', inactive: 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-700', icon: XCircle },
-  late: { label: 'Late', color: 'bg-amber-500 text-white', inactive: 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:text-amber-700', icon: Clock },
+  present: { label: 'Present', color: 'bg-emerald-500 text-white', inactive: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-700', icon: CheckCircle },
+  absent: { label: 'Absent', color: 'bg-red-500 text-white', inactive: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-700', icon: XCircle },
+  late: { label: 'Late', color: 'bg-amber-500 text-white', inactive: 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:text-amber-700', icon: Clock },
 }
 
 export default function AttendanceManagement() {
@@ -72,7 +72,7 @@ export default function AttendanceManagement() {
         ].map(({ label, count, color, bg }) => (
           <div key={label} className={`card text-center p-4 ${bg}`}>
             <p className={`text-2xl font-bold ${color}`}>{count}</p>
-            <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">{label}</p>
+            <p className="text-xs text-slate-500 uppercase tracking-wide mt-1">{label}</p>
           </div>
         ))}
       </div>
@@ -101,13 +101,13 @@ export default function AttendanceManagement() {
         {/* Student rows */}
         <div className="space-y-2">
           {filtered.map(s => (
-            <div key={s.id} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-700/50 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+            <div key={s.id} className="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-700/50 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
               <div className="w-9 h-9 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-sm font-bold text-primary-700 dark:text-primary-300 flex-shrink-0">
                 {s.full_name?.charAt(0)}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-medium text-sm text-gray-900 dark:text-white">{s.full_name}</p>
-                <p className="text-xs text-gray-500">{s.roll_number} • {s.class_name}</p>
+                <p className="font-medium text-sm text-slate-900 dark:text-white">{s.full_name}</p>
+                <p className="text-xs text-slate-500">{s.roll_number} • {s.class_name}</p>
               </div>
               <div className="flex gap-1.5">
                 {Object.entries(STATUS_CONFIG).map(([status, cfg]) => {
@@ -128,7 +128,7 @@ export default function AttendanceManagement() {
             </div>
           ))}
           {!filtered.length && (
-            <p className="text-center text-gray-500 py-8">No students found.</p>
+            <p className="text-center text-slate-500 py-8">No students found.</p>
           )}
         </div>
 

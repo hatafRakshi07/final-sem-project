@@ -68,7 +68,7 @@ export default function StatCard({ title, value, icon: Icon, color = 'blue', sub
   return (
     <div
       onClick={onClick}
-      className={`${c.bg} rounded-2xl border border-gray-100 dark:border-gray-700/60 p-4 sm:p-5 shadow-card hover:shadow-card-hover transition-all duration-200 ${onClick ? 'cursor-pointer active:scale-[0.98]' : ''}`}
+      className={`${c.bg} rounded-2xl border border-slate-100 dark:border-slate-700/60 p-4 sm:p-5 shadow-card hover:shadow-card-hover transition-all duration-200 ${onClick ? 'cursor-pointer active:scale-[0.98]' : ''}`}
     >
       <div className="flex items-start justify-between gap-3 mb-3">
         {Icon && (

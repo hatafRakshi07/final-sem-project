@@ -73,8 +73,8 @@ export default function Exams() {
               <Icon className={`h-5 w-5 ${iconColor}`} />
             </div>
             <div>
-              <p className="text-lg font-bold text-gray-900 dark:text-white leading-tight">{value}</p>
-              <p className="text-xs text-gray-500 uppercase tracking-wide">{label}</p>
+              <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight">{value}</p>
+              <p className="text-xs text-slate-500 uppercase tracking-wide">{label}</p>
             </div>
           </div>
         ))}
@@ -83,10 +83,10 @@ export default function Exams() {
       {marks.length > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           <div className="card lg:col-span-2">
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-4 text-sm uppercase tracking-wide">Score Trend</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white mb-4 text-sm uppercase tracking-wide">Score Trend</h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
                 <XAxis dataKey="name" tick={{ fontSize: 10 }} axisLine={false} tickLine={false} />
                 <YAxis tick={{ fontSize: 11 }} axisLine={false} tickLine={false} domain={[0, 100]} />
                 <Tooltip formatter={(v) => [`${v}%`, 'Score']} />
@@ -96,10 +96,10 @@ export default function Exams() {
           </div>
           {radarData.length >= 3 && (
             <div className="card">
-              <h3 className="font-semibold text-gray-900 dark:text-white mb-4 text-sm uppercase tracking-wide">By Category</h3>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-4 text-sm uppercase tracking-wide">By Category</h3>
               <ResponsiveContainer width="100%" height={200}>
                 <RadarChart data={radarData}>
-                  <PolarGrid stroke="#e5e7eb" />
+                  <PolarGrid stroke="#e2e8f0" />
                   <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11 }} />
                   <Radar dataKey="A" stroke="#8b5cf6" fill="#8b5cf6" fillOpacity={0.3} />
                   <Tooltip formatter={v => `${v}%`} />
@@ -112,11 +112,11 @@ export default function Exams() {
 
       <div className="card">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide">All Results</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide">All Results</h3>
           <div className="flex flex-wrap gap-2">
             {types.map(t => (
               <button key={t} onClick={() => setFilter(t)}
-                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${filter === t ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${filter === t ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}`}>
                 {t}
               </button>
             ))}
@@ -132,9 +132,9 @@ export default function Exams() {
             <tbody>
               {filtered.map((m, i) => (
                 <tr key={i}>
-                  <td><p className="font-medium text-gray-900 dark:text-white">{m.exam_title}</p></td>
-                  <td><span className="capitalize text-gray-500 text-xs">{m.exam_type}</span></td>
-                  <td className="font-medium">{m.marks_obtained}<span className="text-gray-400">/{m.total_marks}</span></td>
+                  <td><p className="font-medium text-slate-900 dark:text-white">{m.exam_title}</p></td>
+                  <td><span className="capitalize text-slate-500 text-xs">{m.exam_type}</span></td>
+                  <td className="font-medium">{m.marks_obtained}<span className="text-slate-400">/{m.total_marks}</span></td>
                   <td><span className={`font-bold ${gradeColor(m.percentage)}`}>{m.percentage}%</span></td>
                   <td><span className={`badge ${gradeBadge(m.percentage)}`}>{m.grade || 'N/A'}</span></td>
                   <td>
@@ -146,8 +146,8 @@ export default function Exams() {
               ))}
               {!filtered.length && (
                 <tr><td colSpan={6} className="py-12 text-center">
-                  <BookOpen className="h-8 w-8 text-gray-300 dark:text-gray-600 mx-auto mb-2" />
-                  <p className="text-gray-500">No exam records yet.</p>
+                  <BookOpen className="h-8 w-8 text-slate-300 dark:text-slate-600 mx-auto mb-2" />
+                  <p className="text-slate-500">No exam records yet.</p>
                 </td></tr>
               )}
             </tbody>

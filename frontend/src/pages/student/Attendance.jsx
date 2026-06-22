@@ -39,7 +39,7 @@ export default function Attendance() {
             <TrendingUp className="h-5 w-5 text-white" />
           </div>
           <p className={`text-2xl sm:text-3xl font-bold ${isGood ? 'text-primary-600 dark:text-primary-400' : 'text-red-500'}`}>{percentage}%</p>
-          <p className="text-xs text-gray-400 mt-1">Overall</p>
+          <p className="text-xs text-slate-400 mt-1">Overall</p>
           <span className={`badge mt-2 ${isGood ? 'badge-green' : 'badge-red'}`}>
             {isGood ? 'Good' : 'Low'}
           </span>
@@ -49,14 +49,14 @@ export default function Attendance() {
             <CheckCircle2 className="h-5 w-5 text-white" />
           </div>
           <p className="text-2xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400">{data?.present || 0}</p>
-          <p className="text-xs text-gray-400 mt-1">Present</p>
+          <p className="text-xs text-slate-400 mt-1">Present</p>
         </div>
         <div className="card text-center p-4">
           <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-2 shadow-md">
             <XCircle className="h-5 w-5 text-white" />
           </div>
           <p className="text-2xl sm:text-3xl font-bold text-red-500">{data?.absent || 0}</p>
-          <p className="text-xs text-gray-400 mt-1">Absent</p>
+          <p className="text-xs text-slate-400 mt-1">Absent</p>
         </div>
       </div>
 
@@ -70,7 +70,7 @@ export default function Attendance() {
 
       {/* Chart */}
       <div className="card">
-        <h3 className="font-semibold text-gray-900 dark:text-white mb-3 text-sm">Attendance Distribution</h3>
+        <h3 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm">Attendance Distribution</h3>
         <ResponsiveContainer width="100%" height={200}>
           <PieChart>
             <Pie
@@ -93,7 +93,7 @@ export default function Attendance() {
 
       {/* History table */}
       <div className="card">
-        <h3 className="font-semibold text-gray-900 dark:text-white mb-4 text-sm">Attendance History</h3>
+        <h3 className="font-semibold text-slate-900 dark:text-white mb-4 text-sm">Attendance History</h3>
         <div className="table-container">
           <table className="table">
             <thead>
@@ -106,10 +106,10 @@ export default function Attendance() {
             <tbody>
               {(data?.records || []).slice(0, 30).map((r, i) => (
                 <tr key={i}>
-                  <td className="text-sm text-gray-700 dark:text-gray-300 font-medium">
+                  <td className="text-sm text-slate-700 dark:text-slate-300 font-medium">
                     {new Date(r.date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })}
                   </td>
-                  <td className="text-sm text-gray-500 dark:text-gray-400">
+                  <td className="text-sm text-slate-500 dark:text-slate-400">
                     {r.subject_id ? `Subject ${r.subject_id}` : 'General'}
                   </td>
                   <td>
@@ -120,7 +120,7 @@ export default function Attendance() {
                 </tr>
               ))}
               {!(data?.records?.length) && (
-                <tr><td colSpan={3} className="text-center text-gray-400 py-6 text-sm">No records found.</td></tr>
+                <tr><td colSpan={3} className="text-center text-slate-400 py-6 text-sm">No records found.</td></tr>
               )}
             </tbody>
           </table>

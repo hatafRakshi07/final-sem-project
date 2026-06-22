@@ -65,7 +65,7 @@ export default function Leaves() {
         ].map(({ label, count, color, bg }) => (
           <div key={label} className={`card text-center p-4 ${bg}`}>
             <p className={`text-2xl font-bold ${color}`}>{count}</p>
-            <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">{label}</p>
+            <p className="text-xs text-slate-500 uppercase tracking-wide mt-1">{label}</p>
           </div>
         ))}
       </div>
@@ -74,7 +74,7 @@ export default function Leaves() {
       <div className="flex gap-2 flex-wrap">
         {['all', 'pending', 'approved', 'rejected'].map(s => (
           <button key={s} onClick={() => setFilter(s)}
-            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filter === s ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>
+            className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${filter === s ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}`}>
             {s === 'all' ? 'All' : s} {s !== 'all' && counts[s] > 0 ? `(${counts[s]})` : ''}
           </button>
         ))}
@@ -90,16 +90,16 @@ export default function Leaves() {
                 <div className="flex items-start gap-3 flex-1 min-w-0">
                   <div className="mt-0.5">{cfg.icon}</div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-gray-900 dark:text-white text-sm">{l.reason}</p>
+                    <p className="font-semibold text-slate-900 dark:text-white text-sm">{l.reason}</p>
                     <div className="flex flex-wrap items-center gap-2 mt-1.5">
-                      <span className="flex items-center gap-1 text-xs text-gray-500">
+                      <span className="flex items-center gap-1 text-xs text-slate-500">
                         <Calendar className="h-3.5 w-3.5" />
                         {new Date(l.from_date).toLocaleDateString()} – {new Date(l.to_date).toLocaleDateString()}
                       </span>
-                      <span className="text-xs text-gray-400">({getDays(l.from_date, l.to_date)} day{getDays(l.from_date, l.to_date) > 1 ? 's' : ''})</span>
+                      <span className="text-xs text-slate-400">({getDays(l.from_date, l.to_date)} day{getDays(l.from_date, l.to_date) > 1 ? 's' : ''})</span>
                     </div>
-                    <p className="text-xs text-gray-400 mt-1">Applied: {new Date(l.applied_at).toLocaleDateString()}</p>
-                    {l.remarks && <p className="text-xs text-gray-500 italic mt-1">"{l.remarks}"</p>}
+                    <p className="text-xs text-slate-400 mt-1">Applied: {new Date(l.applied_at).toLocaleDateString()}</p>
+                    {l.remarks && <p className="text-xs text-slate-500 italic mt-1">"{l.remarks}"</p>}
                   </div>
                 </div>
                 <span className={`badge flex-shrink-0 ${cfg.badge}`}>{l.status}</span>
@@ -109,8 +109,8 @@ export default function Leaves() {
         })}
         {!filtered.length && (
           <div className="card text-center py-12">
-            <FileText className="h-10 w-10 text-gray-300 dark:text-gray-600 mx-auto mb-3" />
-            <p className="text-gray-500">{filter === 'all' ? 'No leave applications yet.' : `No ${filter} applications.`}</p>
+            <FileText className="h-10 w-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+            <p className="text-slate-500">{filter === 'all' ? 'No leave applications yet.' : `No ${filter} applications.`}</p>
           </div>
         )}
       </div>

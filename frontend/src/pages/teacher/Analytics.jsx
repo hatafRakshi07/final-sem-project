@@ -64,8 +64,8 @@ export default function TeacherAnalytics() {
               <Icon className={`h-5 w-5 ${iconColor}`} />
             </div>
             <div>
-              <p className="text-lg font-bold text-gray-900 dark:text-white leading-tight">{value}</p>
-              <p className="text-xs text-gray-500 uppercase tracking-wide">{label}</p>
+              <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight">{value}</p>
+              <p className="text-xs text-slate-500 uppercase tracking-wide">{label}</p>
             </div>
           </div>
         ))}
@@ -75,10 +75,10 @@ export default function TeacherAnalytics() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {trend.length > 0 && (
           <div className="card lg:col-span-2">
-            <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide mb-4">Attendance Trend (14 days)</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide mb-4">Attendance Trend (14 days)</h3>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={trend}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
                 <XAxis dataKey="date" tick={{ fontSize: 10 }} axisLine={false} tickLine={false} tickFormatter={d => d?.slice(5)} />
                 <YAxis tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
                 <Tooltip />
@@ -89,7 +89,7 @@ export default function TeacherAnalytics() {
         )}
         {deptData.length > 0 && (
           <div className="card">
-            <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide mb-4">By Department</h3>
+            <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide mb-4">By Department</h3>
             <ResponsiveContainer width="100%" height={200}>
               <PieChart>
                 <Pie data={deptData} cx="50%" cy="50%" outerRadius={75} dataKey="value" label={({ name, percent }) => `${name.slice(0, 6)}: ${(percent * 100).toFixed(0)}%`}>
@@ -104,10 +104,10 @@ export default function TeacherAnalytics() {
 
       {gradeData.length > 0 && (
         <div className="card">
-          <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide mb-4">Grade Distribution</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide mb-4">Grade Distribution</h3>
           <ResponsiveContainer width="100%" height={180}>
             <BarChart data={gradeData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" vertical={false} />
               <XAxis dataKey="grade" tick={{ fontSize: 12 }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
               <Tooltip />
@@ -120,9 +120,9 @@ export default function TeacherAnalytics() {
       {/* Student list */}
       <div className="card">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <h3 className="font-semibold text-gray-900 dark:text-white text-sm uppercase tracking-wide">Student List</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white text-sm uppercase tracking-wide">Student List</h3>
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
             <input className="input pl-9 w-52" placeholder="Search…" value={search} onChange={e => setSearch(e.target.value)} />
           </div>
         </div>
@@ -141,17 +141,17 @@ export default function TeacherAnalytics() {
                       <div className="w-7 h-7 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-xs font-bold text-primary-700 dark:text-primary-300">
                         {s.full_name?.charAt(0)}
                       </div>
-                      <span className="font-medium text-gray-900 dark:text-white">{s.full_name}</span>
+                      <span className="font-medium text-slate-900 dark:text-white">{s.full_name}</span>
                     </div>
                   </td>
-                  <td className="text-gray-500">{s.roll_number}</td>
+                  <td className="text-slate-500">{s.roll_number}</td>
                   <td>{s.class_name || '—'}</td>
                   <td>{s.department || '—'}</td>
                   <td>{s.semester ? `Sem ${s.semester}` : '—'}</td>
                 </tr>
               ))}
               {!filtered.length && (
-                <tr><td colSpan={5} className="py-8 text-center text-gray-500">No students found.</td></tr>
+                <tr><td colSpan={5} className="py-8 text-center text-slate-500">No students found.</td></tr>
               )}
             </tbody>
           </table>

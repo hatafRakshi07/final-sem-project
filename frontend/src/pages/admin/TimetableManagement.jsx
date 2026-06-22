@@ -65,15 +65,15 @@ export default function TimetableManagement() {
           <button onClick={() => { load(classFilter); setForm(p => ({ ...p, class_name: classFilter })) }} className="btn-secondary">
             Load Timetable
           </button>
-          <p className="text-sm text-gray-500 mt-auto">{entries.length} entries for {classFilter}</p>
+          <p className="text-sm text-slate-500 mt-auto">{entries.length} entries for {classFilter}</p>
         </div>
       </div>
 
       {/* Timetable grid */}
       {entries.length === 0 ? (
         <div className="card text-center py-12">
-          <Calendar className="h-10 w-10 text-gray-300 dark:text-gray-600 mx-auto mb-3" />
-          <p className="text-gray-500">No timetable entries for this class.</p>
+          <Calendar className="h-10 w-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+          <p className="text-slate-500">No timetable entries for this class.</p>
           <button onClick={() => setModal(true)} className="btn-primary mt-3 mx-auto">Add First Entry</button>
         </div>
       ) : (
@@ -84,16 +84,16 @@ export default function TimetableManagement() {
             <div key={day} className="card">
               <div className="flex items-center gap-2 mb-3">
                 <span className={`px-2.5 py-1 rounded-lg text-xs font-semibold ${dayColors[day]}`}>{day}</span>
-                <span className="text-xs text-gray-400">{dayEntries.length} class{dayEntries.length > 1 ? 'es' : ''}</span>
+                <span className="text-xs text-slate-400">{dayEntries.length} class{dayEntries.length > 1 ? 'es' : ''}</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                 {dayEntries.map(e => (
-                  <div key={e.id} className="flex items-start justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-xl border border-gray-100 dark:border-gray-600 group hover:border-primary-300 dark:hover:border-primary-600 transition-colors">
+                  <div key={e.id} className="flex items-start justify-between p-3 bg-slate-50 dark:bg-slate-700/50 rounded-xl border border-slate-100 dark:border-slate-600 group hover:border-primary-300 dark:hover:border-primary-600 transition-colors">
                     <div>
-                      <p className="font-medium text-sm text-gray-900 dark:text-white">
+                      <p className="font-medium text-sm text-slate-900 dark:text-white">
                         {e.subject_name || `Subject #${e.subject_id || 'N/A'}`}
                       </p>
-                      <div className="flex items-center gap-2 mt-1 text-xs text-gray-500 flex-wrap">
+                      <div className="flex items-center gap-2 mt-1 text-xs text-slate-500 flex-wrap">
                         <span className="flex items-center gap-1"><Clock className="h-3 w-3" />{e.start_time} – {e.end_time}</span>
                         {e.room && <span className="flex items-center gap-1"><MapPin className="h-3 w-3" />{e.room}</span>}
                       </div>

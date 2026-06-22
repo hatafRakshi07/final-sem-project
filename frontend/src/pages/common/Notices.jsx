@@ -57,7 +57,7 @@ export default function Notices() {
       <div className="flex gap-2 flex-wrap">
         {['all', 'student', 'teacher', 'parent'].map(r => (
           <button key={r} onClick={() => setFilter(r)}
-            className={`px-3 py-1.5 rounded-full text-xs font-medium capitalize transition-colors ${filter === r ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'}`}>
+            className={`px-3 py-1.5 rounded-full text-xs font-medium capitalize transition-colors ${filter === r ? 'bg-primary-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'}`}>
             {r === 'all' ? 'All Notices' : `For ${r}s`}
           </button>
         ))}
@@ -73,16 +73,16 @@ export default function Notices() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-start justify-between gap-2">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">{n.title}</h3>
+                  <h3 className="font-semibold text-slate-900 dark:text-white">{n.title}</h3>
                   {canPost && (
                     <button onClick={() => del(n.id)} className="p-1.5 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg text-red-500 hover:text-red-700 transition-colors flex-shrink-0">
                       <Trash2 className="h-4 w-4" />
                     </button>
                   )}
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 text-sm mt-1 leading-relaxed">{n.description}</p>
+                <p className="text-slate-600 dark:text-slate-300 text-sm mt-1 leading-relaxed">{n.description}</p>
                 <div className="flex items-center gap-2 mt-2">
-                  <span className="text-xs text-gray-400">{new Date(n.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                  <span className="text-xs text-slate-400">{new Date(n.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                   <span className={`badge text-xs ${targetColors[n.target_role] || 'badge-blue'}`}>{n.target_role}</span>
                 </div>
               </div>
@@ -91,9 +91,9 @@ export default function Notices() {
         ))}
         {!filtered.length && (
           <div className="card text-center py-16">
-            <Bell className="h-12 w-12 mx-auto mb-3 text-gray-300 dark:text-gray-600" />
-            <p className="text-gray-500 font-medium">No notices found</p>
-            <p className="text-gray-400 text-sm mt-1">{canPost ? 'Post a notice to get started.' : 'Check back later.'}</p>
+            <Bell className="h-12 w-12 mx-auto mb-3 text-slate-300 dark:text-slate-600" />
+            <p className="text-slate-500 font-medium">No notices found</p>
+            <p className="text-slate-400 text-sm mt-1">{canPost ? 'Post a notice to get started.' : 'Check back later.'}</p>
           </div>
         )}
       </div>

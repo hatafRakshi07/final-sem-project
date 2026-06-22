@@ -28,14 +28,12 @@ export default function ParentDashboard() {
 
   if (!data?.child) {
     return (
-      <div className="space-y-6">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-          Welcome, {user?.full_name}
-        </h1>
-        <div className="card text-center py-12">
-          <GraduationCap className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-          <p className="text-gray-500 text-lg">{data?.message || 'No child linked to your account.'}</p>
-          <p className="text-gray-400 text-sm mt-2">Please contact the school administrator.</p>
+      <div className="space-y-5 animate-page">
+        <h1 className="page-title">Welcome, {user?.full_name}</h1>
+        <div className="card text-center py-16">
+          <GraduationCap className="h-16 w-16 text-slate-300 dark:text-slate-600 mx-auto mb-4" />
+          <p className="text-slate-500 text-lg font-medium">{data?.message || 'No child linked to your account.'}</p>
+          <p className="text-slate-400 text-sm mt-2">Please contact the school administrator.</p>
         </div>
       </div>
     )
@@ -59,22 +57,16 @@ export default function ParentDashboard() {
   ]
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 animate-page">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Parent Dashboard
-          </h1>
-          <p className="text-gray-500 text-sm mt-1">Tracking progress of {child.name}</p>
+          <h1 className="page-title">Parent Dashboard</h1>
+          <p className="page-subtitle">Tracking progress of {child.name}</p>
         </div>
-        <div className={`px-3 py-1 rounded-full text-sm font-medium ${
-          attendance.percentage >= 75
-            ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
-            : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
-        }`}>
+        <span className={attendance.percentage >= 75 ? 'badge badge-green' : 'badge badge-red'}>
           {attendance.percentage >= 75 ? '✓ Attendance OK' : '⚠ Low Attendance'}
-        </div>
+        </span>
       </div>
 
       {/* Child Info Card */}
@@ -84,8 +76,8 @@ export default function ParentDashboard() {
             <GraduationCap className="h-8 w-8 text-primary-600 dark:text-primary-400" />
           </div>
           <div className="flex-1">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white">{child.name}</h2>
-            <p className="text-gray-500 text-sm">{child.email}</p>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white">{child.name}</h2>
+            <p className="text-slate-500 text-sm">{child.email}</p>
             <div className="flex flex-wrap gap-3 mt-2">
               {child.roll_number && (
                 <span className="badge badge-blue">Roll: {child.roll_number}</span>
@@ -140,7 +132,7 @@ export default function ParentDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Attendance Pie */}
         <div className="card">
-          <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <UserCheck className="h-4 w-4 text-primary-600" /> Attendance
           </h3>
           {attendance.total_classes > 0 ? (
@@ -154,13 +146,13 @@ export default function ParentDashboard() {
               </PieChart>
             </ResponsiveContainer>
           ) : (
-            <p className="text-gray-400 text-center py-8">No attendance records</p>
+            <p className="text-slate-400 text-center py-8">No attendance records</p>
           )}
         </div>
 
         {/* Marks Bar Chart */}
         <div className="card lg:col-span-2">
-          <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <TrendingUp className="h-4 w-4 text-primary-600" /> Exam Performance
           </h3>
           {marksChartData.length > 0 ? (
@@ -173,7 +165,7 @@ export default function ParentDashboard() {
               </BarChart>
             </ResponsiveContainer>
           ) : (
-            <p className="text-gray-400 text-center py-8">No exam records</p>
+            <p className="text-slate-400 text-center py-8">No exam records</p>
           )}
         </div>
       </div>
@@ -182,21 +174,21 @@ export default function ParentDashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Fee Status */}
         <div className="card">
-          <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <DollarSign className="h-4 w-4 text-primary-600" /> Fee Status
           </h3>
           {fees.records.length > 0 ? (
             <div className="space-y-2">
               {fees.records.slice(0, 5).map(f => (
-                <div key={f.id} className="flex items-center justify-between text-sm py-1 border-b border-gray-100 dark:border-gray-700 last:border-0">
+                <div key={f.id} className="flex items-center justify-between text-sm py-1 border-b border-slate-100 dark:border-slate-700 last:border-0">
                   <div>
-                    <p className="font-medium text-gray-800 dark:text-gray-200 capitalize">{f.fee_type}</p>
-                    <p className="text-gray-400 text-xs">
+                    <p className="font-medium text-slate-800 dark:text-slate-200 capitalize">{f.fee_type}</p>
+                    <p className="text-slate-400 text-xs">
                       Due: {f.due_date ? new Date(f.due_date).toLocaleDateString() : 'N/A'}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="font-semibold text-gray-900 dark:text-white">₹{f.amount.toLocaleString()}</p>
+                    <p className="font-semibold text-slate-900 dark:text-white">₹{f.amount.toLocaleString()}</p>
                     <span className={`badge text-xs ${
                       f.status === 'paid' ? 'badge-green' :
                       f.status === 'overdue' ? 'badge-red' : 'badge-yellow'
@@ -206,44 +198,44 @@ export default function ParentDashboard() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-400 text-center py-6">No fee records</p>
+            <p className="text-slate-400 text-center py-6">No fee records</p>
           )}
         </div>
 
         {/* Recent Notices */}
         <div className="card">
-          <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <Bell className="h-4 w-4 text-primary-600" /> Recent Notices
           </h3>
           {notices.length > 0 ? (
             <div className="space-y-3">
               {notices.map(n => (
                 <div key={n.id} className="border-l-2 border-primary-500 pl-3">
-                  <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{n.title}</p>
-                  <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{n.description}</p>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-sm font-medium text-slate-800 dark:text-slate-200">{n.title}</p>
+                  <p className="text-xs text-slate-500 mt-0.5 line-clamp-2">{n.description}</p>
+                  <p className="text-xs text-slate-400 mt-1">
                     {new Date(n.created_at).toLocaleDateString()}
                   </p>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-gray-400 text-center py-6">No notices</p>
+            <p className="text-slate-400 text-center py-6">No notices</p>
           )}
         </div>
 
         {/* Recent Leaves */}
         <div className="card">
-          <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+          <h3 className="text-base font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
             <FileText className="h-4 w-4 text-primary-600" /> Leave Applications
           </h3>
           {leaves.length > 0 ? (
             <div className="space-y-2">
               {leaves.map(lv => (
-                <div key={lv.id} className="flex items-center justify-between text-sm py-1 border-b border-gray-100 dark:border-gray-700 last:border-0">
+                <div key={lv.id} className="flex items-center justify-between text-sm py-1 border-b border-slate-100 dark:border-slate-700 last:border-0">
                   <div>
-                    <p className="font-medium text-gray-800 dark:text-gray-200 line-clamp-1">{lv.reason}</p>
-                    <p className="text-xs text-gray-400">
+                    <p className="font-medium text-slate-800 dark:text-slate-200 line-clamp-1">{lv.reason}</p>
+                    <p className="text-xs text-slate-400">
                       {new Date(lv.from_date).toLocaleDateString()} – {new Date(lv.to_date).toLocaleDateString()}
                     </p>
                   </div>
@@ -255,7 +247,7 @@ export default function ParentDashboard() {
               ))}
             </div>
           ) : (
-            <p className="text-gray-400 text-center py-6">No leave applications</p>
+            <p className="text-slate-400 text-center py-6">No leave applications</p>
           )}
         </div>
       </div>

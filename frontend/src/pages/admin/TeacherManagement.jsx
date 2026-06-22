@@ -62,22 +62,22 @@ export default function TeacherManagement() {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         <div className="card p-4 text-center bg-purple-50 dark:bg-purple-900/20">
           <p className="text-2xl font-bold text-purple-600">{teachers.length}</p>
-          <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">Total Teachers</p>
+          <p className="text-xs text-slate-500 uppercase tracking-wide mt-1">Total Teachers</p>
         </div>
         <div className="card p-4 text-center bg-emerald-50 dark:bg-emerald-900/20">
           <p className="text-2xl font-bold text-emerald-600">{teachers.filter(t => t.is_active).length}</p>
-          <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">Active</p>
+          <p className="text-xs text-slate-500 uppercase tracking-wide mt-1">Active</p>
         </div>
         <div className="card p-4 text-center bg-blue-50 dark:bg-blue-900/20 col-span-2 sm:col-span-1">
           <p className="text-2xl font-bold text-blue-600">{Object.keys(deptCounts).length}</p>
-          <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">Departments</p>
+          <p className="text-xs text-slate-500 uppercase tracking-wide mt-1">Departments</p>
         </div>
       </div>
 
       <div className="card">
         <div className="flex gap-3 mb-4">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
             <input className="input pl-9" placeholder="Search by name, email, ID…" value={search}
               onChange={e => { setSearch(e.target.value); load() }} />
           </div>
@@ -99,12 +99,12 @@ export default function TeacherManagement() {
                         {t.full_name?.charAt(0)}
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900 dark:text-white text-sm">{t.full_name}</p>
-                        <p className="text-xs text-gray-400">{t.email}</p>
+                        <p className="font-medium text-slate-900 dark:text-white text-sm">{t.full_name}</p>
+                        <p className="text-xs text-slate-400">{t.email}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="text-gray-500 text-sm">{t.employee_id}</td>
+                  <td className="text-slate-500 text-sm">{t.employee_id}</td>
                   <td>{t.department || '—'}</td>
                   <td>{t.qualification || '—'}</td>
                   <td>{t.experience_years ? `${t.experience_years} yrs` : '—'}</td>
@@ -117,8 +117,8 @@ export default function TeacherManagement() {
               ))}
               {!filtered.length && (
                 <tr><td colSpan={6} className="py-12 text-center">
-                  <Users className="h-8 w-8 text-gray-300 dark:text-gray-600 mx-auto mb-2" />
-                  <p className="text-gray-500">No teachers found.</p>
+                  <Users className="h-8 w-8 text-slate-300 dark:text-slate-600 mx-auto mb-2" />
+                  <p className="text-slate-500">No teachers found.</p>
                 </td></tr>
               )}
             </tbody>

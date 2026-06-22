@@ -97,27 +97,27 @@ export default function StudentDashboard() {
       {/* Charts row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="card">
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-4 text-sm">Performance Radar</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white mb-4 text-sm">Performance Radar</h3>
           <ResponsiveContainer width="100%" height={180}>
             <RadarChart data={radarData}>
-              <PolarGrid stroke="#e5e7eb" />
-              <PolarAngleAxis dataKey="subject" tick={{ fill: '#9ca3af', fontSize: 11, fontWeight: 500 }} />
+              <PolarGrid stroke="#e2e8f0" />
+              <PolarAngleAxis dataKey="subject" tick={{ fill: '#94a3b8', fontSize: 11, fontWeight: 500 }} />
               <Radar dataKey="value" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.25} strokeWidth={2} />
             </RadarChart>
           </ResponsiveContainer>
         </div>
 
         <div className="card">
-          <h3 className="font-semibold text-gray-900 dark:text-white mb-4 text-sm">Recent Marks</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white mb-4 text-sm">Recent Marks</h3>
           <div className="space-y-3">
             {(data.marks?.marks || []).slice(0, 4).map((m, i) => (
               <div key={i} className="flex items-center justify-between gap-3">
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{m.exam_title}</p>
-                  <p className="text-xs text-gray-400">{m.exam_type}</p>
+                  <p className="text-sm font-medium text-slate-900 dark:text-white truncate">{m.exam_title}</p>
+                  <p className="text-xs text-slate-400">{m.exam_type}</p>
                 </div>
                 <div className="text-right flex-shrink-0">
-                  <p className="font-bold text-sm text-gray-900 dark:text-white">{m.marks_obtained}/{m.total_marks}</p>
+                  <p className="font-bold text-sm text-slate-900 dark:text-white">{m.marks_obtained}/{m.total_marks}</p>
                   <span className={`badge ${m.percentage >= 60 ? 'badge-green' : 'badge-red'}`}>
                     {m.grade || `${m.percentage}%`}
                   </span>
@@ -125,7 +125,7 @@ export default function StudentDashboard() {
               </div>
             ))}
             {!data.marks?.marks?.length && (
-              <p className="text-gray-400 dark:text-gray-500 text-sm text-center py-4">No marks recorded yet.</p>
+              <p className="text-slate-400 dark:text-slate-500 text-sm text-center py-4">No marks recorded yet.</p>
             )}
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function StudentDashboard() {
       {/* Pending Assignments */}
       <div className="card">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-gray-900 dark:text-white text-sm">Pending Assignments</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white text-sm">Pending Assignments</h3>
           {pendingAssignments.length > 0 && (
             <span className="badge badge-yellow">{pendingAssignments.length} pending</span>
           )}
@@ -144,12 +144,12 @@ export default function StudentDashboard() {
             {pendingAssignments.slice(0, 4).map(a => {
               const isOverdue = new Date(a.deadline) < new Date()
               return (
-                <div key={a.id} className={`flex items-start justify-between p-3 rounded-xl gap-3 ${isOverdue ? 'bg-red-50/60 dark:bg-red-900/10' : 'bg-gray-50 dark:bg-gray-700/40'}`}>
+                <div key={a.id} className={`flex items-start justify-between p-3 rounded-xl gap-3 ${isOverdue ? 'bg-red-50/60 dark:bg-red-900/10' : 'bg-slate-50 dark:bg-slate-700/40'}`}>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{a.title}</p>
+                    <p className="text-sm font-medium text-slate-900 dark:text-white truncate">{a.title}</p>
                     <div className="flex items-center gap-1 mt-0.5">
-                      <Clock className={`h-3 w-3 flex-shrink-0 ${isOverdue ? 'text-red-500' : 'text-gray-400'}`} />
-                      <p className={`text-xs ${isOverdue ? 'text-red-500 font-medium' : 'text-gray-400'}`}>
+                      <Clock className={`h-3 w-3 flex-shrink-0 ${isOverdue ? 'text-red-500' : 'text-slate-400'}`} />
+                      <p className={`text-xs ${isOverdue ? 'text-red-500 font-medium' : 'text-slate-400'}`}>
                         {isOverdue ? 'Overdue · ' : 'Due · '}{new Date(a.deadline).toLocaleDateString()}
                       </p>
                     </div>

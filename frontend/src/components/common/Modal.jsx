@@ -14,17 +14,17 @@ export default function Modal({ open, onClose, title, children, size = 'md' }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className={`relative bg-white dark:bg-gray-800 w-full ${sizes[size]} max-h-[92dvh] sm:max-h-[90vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-2xl animate-slide-up`}>
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+      <div className={`relative bg-white dark:bg-slate-800 w-full ${sizes[size]} max-h-[92dvh] sm:max-h-[90vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl shadow-card-lg border border-slate-200/60 dark:border-slate-700/60 animate-scale-in`}>
         {/* Mobile drag handle */}
         <div className="flex justify-center pt-3 pb-1 sm:hidden">
-          <div className="w-10 h-1 bg-gray-200 dark:bg-gray-600 rounded-full" />
+          <div className="w-10 h-1 bg-slate-200 dark:bg-slate-600 rounded-full" />
         </div>
-        <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100 dark:border-gray-700">
-          <h2 className="text-base font-semibold text-gray-900 dark:text-white">{title}</h2>
+        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 dark:border-slate-700">
+          <h2 className="text-base font-bold text-slate-900 dark:text-white">{title}</h2>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-xl hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-500 transition-colors active:scale-95"
+            className="btn-icon"
           >
             <X className="h-4 w-4" />
           </button>

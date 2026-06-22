@@ -63,15 +63,15 @@ export default function StudentManagement() {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         <div className="card p-4 text-center bg-blue-50 dark:bg-blue-900/20">
           <p className="text-2xl font-bold text-blue-600">{page.total}</p>
-          <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">Total Students</p>
+          <p className="text-xs text-slate-500 uppercase tracking-wide mt-1">Total Students</p>
         </div>
         <div className="card p-4 text-center bg-emerald-50 dark:bg-emerald-900/20">
           <p className="text-2xl font-bold text-emerald-600">{students.filter(s => s.is_active).length}</p>
-          <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">Active</p>
+          <p className="text-xs text-slate-500 uppercase tracking-wide mt-1">Active</p>
         </div>
         <div className="card p-4 text-center bg-purple-50 dark:bg-purple-900/20 col-span-2 sm:col-span-1">
           <p className="text-2xl font-bold text-purple-600">{new Set(students.map(s => s.department)).size}</p>
-          <p className="text-xs text-gray-500 uppercase tracking-wide mt-1">Departments</p>
+          <p className="text-xs text-slate-500 uppercase tracking-wide mt-1">Departments</p>
         </div>
       </div>
 
@@ -79,7 +79,7 @@ export default function StudentManagement() {
         {/* Search bar */}
         <div className="flex gap-3 mb-4">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
             <input className="input pl-9" placeholder="Search by name, email, roll no…" value={search}
               onChange={e => { setSearch(e.target.value); load(e.target.value, 0) }} />
           </div>
@@ -102,12 +102,12 @@ export default function StudentManagement() {
                         {s.full_name?.charAt(0)}
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900 dark:text-white text-sm">{s.full_name}</p>
-                        <p className="text-xs text-gray-400">{s.email}</p>
+                        <p className="font-medium text-slate-900 dark:text-white text-sm">{s.full_name}</p>
+                        <p className="text-xs text-slate-400">{s.email}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="text-gray-500 text-sm">{s.roll_number}</td>
+                  <td className="text-slate-500 text-sm">{s.roll_number}</td>
                   <td>{s.class_name || '—'}</td>
                   <td>{s.department || '—'}</td>
                   <td>{s.semester ? `Sem ${s.semester}` : '—'}</td>
@@ -120,8 +120,8 @@ export default function StudentManagement() {
               ))}
               {!students.length && (
                 <tr><td colSpan={6} className="py-12 text-center">
-                  <GraduationCap className="h-8 w-8 text-gray-300 dark:text-gray-600 mx-auto mb-2" />
-                  <p className="text-gray-500">No students found.</p>
+                  <GraduationCap className="h-8 w-8 text-slate-300 dark:text-slate-600 mx-auto mb-2" />
+                  <p className="text-slate-500">No students found.</p>
                 </td></tr>
               )}
             </tbody>
@@ -130,15 +130,15 @@ export default function StudentManagement() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
-            <p className="text-sm text-gray-500">Page {currentPage} of {totalPages}</p>
+          <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
+            <p className="text-sm text-slate-500">Page {currentPage} of {totalPages}</p>
             <div className="flex gap-2">
               <button onClick={() => load(search, page.skip - 20)} disabled={page.skip === 0}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg disabled:opacity-40">
+                className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg disabled:opacity-40">
                 <ChevronLeft className="h-4 w-4" />
               </button>
               <button onClick={() => load(search, page.skip + 20)} disabled={page.skip + 20 >= page.total}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg disabled:opacity-40">
+                className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg disabled:opacity-40">
                 <ChevronRight className="h-4 w-4" />
               </button>
             </div>

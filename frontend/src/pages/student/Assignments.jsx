@@ -56,7 +56,7 @@ export default function Assignments() {
 
       {pending.length > 0 && (
         <div>
-          <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Pending</h2>
+          <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Pending</h2>
           <div className="space-y-3">
             {pending.map(a => {
               const isOverdue = new Date(a.deadline) < new Date()
@@ -64,19 +64,19 @@ export default function Assignments() {
                 <div key={a.id} className={`card border-l-4 ${isOverdue ? 'border-l-red-400' : 'border-l-amber-400'}`}>
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{a.title}</h3>
-                      {a.description && <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">{a.description}</p>}
+                      <h3 className="font-semibold text-slate-900 dark:text-white text-sm">{a.title}</h3>
+                      {a.description && <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">{a.description}</p>}
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2">
                         <div className="flex items-center gap-1">
                           {isOverdue
                             ? <AlertCircle className="h-3.5 w-3.5 text-red-500" />
                             : <Clock className="h-3.5 w-3.5 text-amber-500" />
                           }
-                          <span className={`text-xs font-medium ${isOverdue ? 'text-red-500' : 'text-gray-500'}`}>
+                          <span className={`text-xs font-medium ${isOverdue ? 'text-red-500' : 'text-slate-500'}`}>
                             {isOverdue ? 'Overdue · ' : 'Due · '}{new Date(a.deadline).toLocaleDateString()}
                           </span>
                         </div>
-                        <span className="text-xs text-gray-400">{a.max_marks} marks</span>
+                        <span className="text-xs text-slate-400">{a.max_marks} marks</span>
                       </div>
                     </div>
                     <button
@@ -96,13 +96,13 @@ export default function Assignments() {
 
       {submitted.length > 0 && (
         <div>
-          <h2 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Submitted</h2>
+          <h2 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Submitted</h2>
           <div className="space-y-3">
             {submitted.map(a => (
               <div key={a.id} className="card border-l-4 border-l-emerald-400">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{a.title}</h3>
+                    <h3 className="font-semibold text-slate-900 dark:text-white text-sm">{a.title}</h3>
                     <div className="flex items-center gap-1.5 mt-1.5">
                       <CheckCircle className="h-3.5 w-3.5 text-emerald-500" />
                       <span className="text-xs text-emerald-600 dark:text-emerald-400">
@@ -132,14 +132,14 @@ export default function Assignments() {
 
       {!assignments.length && (
         <div className="card text-center py-12">
-          <FileText className="h-10 w-10 text-gray-300 dark:text-gray-600 mx-auto mb-3" />
-          <p className="text-gray-400 dark:text-gray-500 text-sm">No assignments yet.</p>
+          <FileText className="h-10 w-10 text-slate-300 dark:text-slate-600 mx-auto mb-3" />
+          <p className="text-slate-400 dark:text-slate-500 text-sm">No assignments yet.</p>
         </div>
       )}
 
       <Modal open={!!submitModal} onClose={() => { setSubmitModal(null); setTextContent('') }} title={`Submit: ${submitModal?.title}`}>
         <div className="space-y-4">
-          <div className="flex items-center gap-1.5 text-sm text-gray-500">
+          <div className="flex items-center gap-1.5 text-sm text-slate-500">
             <Clock className="h-4 w-4" />
             <span>Due: {submitModal && new Date(submitModal.deadline).toLocaleString()}</span>
           </div>

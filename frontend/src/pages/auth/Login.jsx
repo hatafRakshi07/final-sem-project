@@ -17,6 +17,7 @@ const DEMO_ROLES = [
   { role: 'Admin', email: 'admin@school.com', pass: 'Admin@123', color: 'hover:border-violet-400 hover:text-violet-600 dark:hover:text-violet-400', dot: 'bg-violet-500' },
   { role: 'Teacher', email: 'teacher1@school.com', pass: 'Teacher@123', color: 'hover:border-emerald-400 hover:text-emerald-600 dark:hover:text-emerald-400', dot: 'bg-emerald-500' },
   { role: 'Student', email: 'student1@school.com', pass: 'Student@123', color: 'hover:border-primary-400 hover:text-primary-600 dark:hover:text-primary-400', dot: 'bg-primary-500' },
+  { role: 'Parent', email: 'parent1@school.com', pass: 'Parent@123', color: 'hover:border-amber-400 hover:text-amber-600 dark:hover:text-amber-400', dot: 'bg-amber-500' },
 ]
 
 export default function Login() {

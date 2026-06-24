@@ -29,8 +29,13 @@ export function NotificationProvider({ children }) {
     fetch()
   }
 
+  const markAllRead = async () => {
+    await notificationAPI.markAllRead()
+    fetch()
+  }
+
   return (
-    <NotificationContext.Provider value={{ notifications, unread, markRead, refetch: fetch }}>
+    <NotificationContext.Provider value={{ notifications, unread, markRead, markAllRead, refetch: fetch }}>
       {children}
     </NotificationContext.Provider>
   )

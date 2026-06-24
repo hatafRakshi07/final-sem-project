@@ -123,7 +123,7 @@ def seed():
                                           date=att_date, status=status,
                                           marked_by_id=teachers[0].id if teachers else None))
         db.commit()
-
+  
         for subject in subjects_list[:2]:
             for etype in [ExamType.midterm, ExamType.final]:
                 title = f"{subject.name} {etype.value.title()}"

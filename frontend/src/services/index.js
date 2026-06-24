@@ -16,6 +16,7 @@ export {
   parentAPI,
 } from './api'
 
+import api from './api'
 export { default } from './api'
 
 export const leaveService = {
